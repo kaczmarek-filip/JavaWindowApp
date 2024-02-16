@@ -1,9 +1,11 @@
 package org.example.frames.loginFrame;
 
+import org.example.User;
 import org.example.frames.FrameConfig;
 import org.example.frames.MessageFrame;
 import org.example.frames.PassField;
 import org.example.frames.TextField;
+import org.example.frames.mainFrame.MainFrame;
 
 import javax.swing.*;
 import java.awt.*;
@@ -40,9 +42,11 @@ public class LoginFrame extends FrameConfig {
                 login = loginField.getText();
                 password = passwordField.getText();
 
-                if(loginButton.databaseListener(login, password)){
+                User user = loginButton.databaseListener(login, password);
+
+                if(user != null){
                     loginButton.closeFrame();
-                    loginButton.openFrame();
+                    new MainFrame(user);
                 } else {
                     new MessageFrame("Błędne dane logowania");
                 }

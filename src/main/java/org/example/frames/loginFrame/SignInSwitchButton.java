@@ -1,5 +1,6 @@
 package org.example.frames.loginFrame;
 
+import org.example.User;
 import org.example.frames.FrameButton;
 import org.example.frames.signInFrame.SignInFrame;
 
@@ -18,8 +19,8 @@ public class SignInSwitchButton extends FrameButton {
     }
 
     @Override
-    public boolean databaseListener(String login, String password) {
+    public User databaseListener(String login, String password) {
 
-        return true;
+        return null;
     }
 }

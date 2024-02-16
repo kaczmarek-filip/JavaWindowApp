@@ -59,7 +59,7 @@ public class MyButton{
             jButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    new MainFrame();
+//                    new MainFrame();
 
                     DatabaseConnection databaseConnection = new DatabaseConnection();
 //                    databaseConnection.save(new User("test", "testPass"));

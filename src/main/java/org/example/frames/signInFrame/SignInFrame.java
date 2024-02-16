@@ -1,8 +1,10 @@
 package org.example.frames.signInFrame;
 
+import org.example.User;
 import org.example.frames.FrameConfig;
 import org.example.frames.PassField;
 import org.example.frames.TextField;
+import org.example.frames.mainFrame.MainFrame;
 
 import javax.swing.*;
 import java.awt.*;
@@ -57,9 +59,9 @@ public class SignInFrame extends FrameConfig {
 
 
                 if(passwordChecker.isCorrect() == null){
-                    signInButton.databaseListener(login, password);
+                    User user = signInButton.databaseListener(login, password);
                     signInButton.closeFrame();
-                    signInButton.openFrame();
+                    new MainFrame(user);
                 } else {
                     signInButton.error(passwordChecker);
                 }

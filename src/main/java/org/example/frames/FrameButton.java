@@ -1,5 +1,7 @@
 package org.example.frames;
 
+import org.example.User;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -26,7 +28,7 @@ public abstract class FrameButton extends JButton{
         return this;
     }
     public abstract void openFrame();
-    public abstract boolean databaseListener(String login, String password);
+    public abstract User databaseListener(String login, String password);
     public void closeFrame(){
         frameToClose.dispose();
     }

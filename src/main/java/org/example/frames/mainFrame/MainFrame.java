@@ -6,8 +6,8 @@ import javax.swing.*;
 import java.awt.*;
 //TODO: Szyfrowanie haseł
 public class MainFrame extends JFrame {
-    public MainFrame(){
-        super("Aplikacja");
+    public MainFrame(User user){
+        super("Aplikacja " + user.getId() + ":" + user.getLogin());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(400,200));
         setSize(300, 300);

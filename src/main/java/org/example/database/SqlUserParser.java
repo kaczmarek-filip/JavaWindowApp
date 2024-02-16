@@ -15,7 +15,7 @@ public class SqlUserParser {
         return query;
     }
     public String authentication(String login, String password){
-        query = "SELECT COUNT(*) FROM users WHERE login = '" + login + "' AND password = '" + password + "';";
+        query = "SELECT `ID`, `login`, `password` FROM `users` WHERE login = '" + login + "' AND password = '" + password + "';";
 
         return query;
     }

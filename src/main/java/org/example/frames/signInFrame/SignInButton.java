@@ -16,7 +16,7 @@ public class SignInButton extends FrameButton {
 
     @Override
     public void openFrame() {
-        new MainFrame();
+//        new MainFrame();
     }
 
     @Override
@@ -25,11 +25,11 @@ public class SignInButton extends FrameButton {
     }
 
     @Override
-    public boolean databaseListener(String login, String password) {
+    public User databaseListener(String login, String password) {
         DatabaseConnection databaseConnection = new DatabaseConnection();
-        User user = new User(login, password);
+        User user = new User(null, login, password);
         databaseConnection.save(user);
-        return true;
+        return user;
     }
 
     public void error(RegisterChecker passwordChecker) {

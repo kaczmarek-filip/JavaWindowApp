@@ -62,7 +62,7 @@ public class DatabaseConnection {
         return false;
     }
 
-    public boolean authentication(String login, String password){
+    public User authentication(String login, String password){
         query = sqlUserParser.authentication(login, password);
 
         try {
@@ -72,10 +72,23 @@ public class DatabaseConnection {
 
             try (ResultSet resultSet = statement.executeQuery(query)) {
 
+//                if (resultSet.next()) {
+//                    int count = resultSet.getInt(1);
+//                    if (count == 1){
+////                        return true; // TODO: Jeżeli prawidłowo, to pobierz login, hasło i ID użytkownika
+//                        String userLogin = resultSet.getString("login");
+//                        String userPassword = resultSet.getString("password");
+//                        String userId = resultSet.getString("ID");
+//                        return new User(userId, userLogin, userPassword);
+//                    }
+//                }
                 if (resultSet.next()) {
-                    int count = resultSet.getInt(1);
-                    if (count == 1){
-                        return true; // TODO: Jeżeli prawidłowo, to pobierz login, hasło i ID użytkownika
+                    String userLogin = resultSet.getString("login");
+                    String userPassword = resultSet.getString("password");
+                    String userId = resultSet.getString("ID");
+
+                    if (login.equals(userLogin) && password.equals(userPassword)) {
+                        return new User(userId, userLogin, userPassword);
                     }
                 }
             }
@@ -86,6 +99,6 @@ public class DatabaseConnection {
         } catch (ClassNotFoundException | SQLException e) {
             throw new RuntimeException(e);
         }
-        return false;
+        return null;
     }
 }

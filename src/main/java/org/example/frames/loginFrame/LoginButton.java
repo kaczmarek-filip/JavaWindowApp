@@ -1,5 +1,6 @@
 package org.example.frames.loginFrame;
 
+import org.example.User;
 import org.example.database.DatabaseConnection;
 import org.example.frames.FrameButton;
 import org.example.frames.mainFrame.MainFrame;
@@ -25,7 +26,7 @@ public class LoginButton extends FrameButton {
     }
 
     @Override
-    public boolean databaseListener(String login, String password) {
+    public User databaseListener(String login, String password) {
         DatabaseConnection databaseConnection = new DatabaseConnection();
 
         return databaseConnection.authentication(login, password);
