@@ -38,10 +38,14 @@ public class SignInFrame extends FrameConfig {
         add(new JLabel("Powtórz hasło:"));
         add(repeatPasswordField);
 
-        //TODO: Dodać pole z wyskakującymi komunikatami
 
         add(signInButton);
 
+        listener();
+    }
+
+
+    private void listener(){
         signInButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -49,15 +53,19 @@ public class SignInFrame extends FrameConfig {
                 password = passwordField.getText();
                 repeatPassword = repeatPasswordField.getText();
 
-                PasswordChecker passwordChecker = new PasswordChecker(password, repeatPassword);
-                if(passwordChecker.isCorrect())
+                RegisterChecker passwordChecker = new RegisterChecker(login, password, repeatPassword);
+
+
+                if(passwordChecker.isCorrect() == null){
                     signInButton.databaseListener(login, password);
-
-
+                    signInButton.closeFrame();
+                    signInButton.openFrame();
+                } else {
+                    signInButton.error(passwordChecker);
+                }
 
             }
         });
-
     }
 
 }

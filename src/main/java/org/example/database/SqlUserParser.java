@@ -9,4 +9,9 @@ public class SqlUserParser {
 
         return query;
     }
+    public String checkLogin(String login){
+        query = "SELECT COUNT(*) FROM users WHERE login = '" + login + "';";
+
+        return query;
+    }
 }

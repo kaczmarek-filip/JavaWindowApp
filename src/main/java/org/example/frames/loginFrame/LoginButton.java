@@ -1,10 +1,11 @@
 package org.example.frames.loginFrame;
 
+import org.example.frames.FrameButton;
 import org.example.frames.mainFrame.MainFrame;
 
 import javax.swing.*;
 
-public class LoginButton extends LoginFrameButton {
+public class LoginButton extends FrameButton {
 
 
     public LoginButton(JFrame frameToClose, String text) {
@@ -12,7 +13,7 @@ public class LoginButton extends LoginFrameButton {
     }
 
     @Override
-    public void openMainFrame() {
+    public void openFrame() {
         new MainFrame();
     }
 
