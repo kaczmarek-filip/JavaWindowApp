@@ -59,7 +59,33 @@ public class DatabaseConnection {
         } catch (ClassNotFoundException | SQLException e) {
             throw new RuntimeException(e);
         }
+        return false;
+    }
 
+    public boolean authentication(String login, String password){
+        query = sqlUserParser.authentication(login, password);
+
+        try {
+            Class.forName(DbDriver);
+            connection = DriverManager.getConnection(DbUrl, DbUser, DbPassword);
+            statement = connection.createStatement();
+
+            try (ResultSet resultSet = statement.executeQuery(query)) {
+
+                if (resultSet.next()) {
+                    int count = resultSet.getInt(1);
+                    if (count == 1){
+                        return true; // TODO: Jeżeli prawidłowo, to pobierz login, hasło i ID użytkownika
+                    }
+                }
+            }
+
+            statement.close();
+            connection.close();
+
+        } catch (ClassNotFoundException | SQLException e) {
+            throw new RuntimeException(e);
+        }
         return false;
     }
 }

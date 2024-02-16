@@ -1,8 +1,10 @@
 package org.example.frames.mainFrame;
 
+import org.example.User;
+
 import javax.swing.*;
 import java.awt.*;
-
+//TODO: Szyfrowanie haseł
 public class MainFrame extends JFrame {
     public MainFrame(){
         super("Aplikacja");

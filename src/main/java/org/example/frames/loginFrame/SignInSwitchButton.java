@@ -18,7 +18,8 @@ public class SignInSwitchButton extends FrameButton {
     }
 
     @Override
-    public void databaseListener(String login, String password) {
+    public boolean databaseListener(String login, String password) {
 
+        return true;
     }
 }

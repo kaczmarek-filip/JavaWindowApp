@@ -26,7 +26,7 @@ public abstract class FrameButton extends JButton{
         return this;
     }
     public abstract void openFrame();
-    public abstract void databaseListener(String login, String password);
+    public abstract boolean databaseListener(String login, String password);
     public void closeFrame(){
         frameToClose.dispose();
     }
