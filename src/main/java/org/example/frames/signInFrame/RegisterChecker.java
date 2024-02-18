@@ -26,7 +26,7 @@ public class RegisterChecker {
         } else if (isLoginExists()) {
             return "Podany login już istnieje";
         } else {
-            return null;
+            return "correct";
         }
     }
 

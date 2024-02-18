@@ -1,5 +1,8 @@
 package org.example.frames.loginFrame;
 
+import com.mysql.cj.exceptions.CJCommunicationsException;
+import com.mysql.cj.jdbc.exceptions.CommunicationsException;
+import com.mysql.cj.jdbc.exceptions.SQLError;
 import org.example.User;
 import org.example.frames.FrameConfig;
 import org.example.frames.MessageFrame;
@@ -11,8 +14,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.ConnectException;
+import java.sql.SQLException;
 
-public class LoginFrame extends FrameConfig {
+public class LoginFrame extends FrameConfig{
 
     private TextField loginField = new TextField();
     private PassField passwordField = new PassField();
@@ -21,6 +26,7 @@ public class LoginFrame extends FrameConfig {
 
     private String login;
     private String password;
+    private User user;
     public LoginFrame(){
         super("Logowanie",
                 400,
@@ -42,14 +48,19 @@ public class LoginFrame extends FrameConfig {
                 login = loginField.getText();
                 password = passwordField.getText();
 
-                User user = loginButton.databaseListener(login, password);
-
-                if(user != null){
-                    loginButton.closeFrame();
-                    new MainFrame(user);
-                } else {
-                    new MessageFrame("Błędne dane logowania");
+                try {
+                    user = loginButton.databaseListener(login, password);
+                    if(user != null){
+                        loginButton.closeFrame();
+                        new MainFrame(user);
+                    } else {
+                        new MessageFrame("Błędne dane logowania");
+                    }
+                } catch (RuntimeException exception) {
+                    new MessageFrame("Błąd połączenia z bazą danych");
                 }
+
+
             }
         });
 

@@ -6,6 +6,7 @@ import org.example.frames.FrameButton;
 import org.example.frames.mainFrame.MainFrame;
 
 import javax.swing.*;
+import java.net.URISyntaxException;
 
 public class LoginButton extends FrameButton {
 

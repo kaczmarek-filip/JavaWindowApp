@@ -1,7 +1,11 @@
 package org.example.frames.signInFrame;
 
+import com.mysql.cj.exceptions.CJCommunicationsException;
+import com.mysql.cj.exceptions.ExceptionFactory;
+import com.mysql.cj.jdbc.exceptions.CommunicationsException;
 import org.example.User;
 import org.example.frames.FrameConfig;
+import org.example.frames.MessageFrame;
 import org.example.frames.PassField;
 import org.example.frames.TextField;
 import org.example.frames.mainFrame.MainFrame;
@@ -10,6 +14,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.ConnectException;
+import java.sql.SQLException;
 
 public class SignInFrame extends FrameConfig {
 
@@ -58,10 +64,11 @@ public class SignInFrame extends FrameConfig {
                 RegisterChecker passwordChecker = new RegisterChecker(login, password, repeatPassword);
 
 
-                if(passwordChecker.isCorrect() == null){
+                if(passwordChecker.isCorrect().equals("correct")){
                     User user = signInButton.databaseListener(login, password);
                     signInButton.closeFrame();
                     new MainFrame(user);
+
                 } else {
                     signInButton.error(passwordChecker);
                 }
