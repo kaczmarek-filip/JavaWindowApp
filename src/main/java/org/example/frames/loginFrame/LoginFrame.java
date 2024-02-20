@@ -16,7 +16,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.ConnectException;
 import java.sql.SQLException;
-
+//TODO: dodać logowanie za pomocą entera
 public class LoginFrame extends FrameConfig{
 
     private TextField loginField = new TextField();
